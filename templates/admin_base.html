@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <h3>Admin Panel</h3>
+        <a href="{{ url_for('index') }}">View Site</a>
+        <a href="{{ url_for('admin_products') }}">Products</a>
+        <a href="{{ url_for('new_product_form') }}">Add Product</a>
+        <a href="{{ url_for('admin_users') }}">Users</a>
+      </aside>
+
+      <main class="admin-content">{% block content %} {% endblock %}</main>
+    </div>
+  </body>
+</html>

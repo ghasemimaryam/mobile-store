@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <title>{% block title %}MobileStore{% endblock %}</title>
+  </head>
+  <body class="auth-page">
+    <div class="auth-container">
+      <div class="auth-main">
+        <div class="auth-card">
+          <div class="auth-logo">
+            <a href="{{ url_for('index') }}">
+              <img
+                src="{{ url_for('static', filename='img/logo.svg') }}"
+                alt="Mobile Soren logo"
+                class="logo-img"
+              />
+              <span class="logo-text">MobileStore</span>
+            </a>
+          </div>
+
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+
+      <div class="auth-side">
+        <div class="auth-side-content">
+          <span class="side-badge">
+            <i class="bi bi-shield-check"></i> Authentic & Secure
+          </span>
+          <h2>Your Trusted Mobile Store</h2>
+          <p>Best phones, best prices, delivered fast to your doorstep.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

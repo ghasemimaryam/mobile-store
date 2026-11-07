@@ -1,0 +1,28 @@
+{% extends "admin_base.html" %} {% block content %}
+<main>
+  <h2>Manage Users</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Admin?</th>
+      <th>Action</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{% if user.is_admin == 1 %}Yes{% else %}No{% endif %}</td>
+      <td>
+        <form
+          action="{{ url_for('delete_user', user_id=user.id) }}"
+          method="POST"
+        >
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</main>
+{% endblock %}

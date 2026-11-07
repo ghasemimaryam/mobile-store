@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block content %}
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <span class="hero-badge">NEW RELEASE 2026</span>
+      <h1>Next-Gen Mobile Technology</h1>
+      <p>
+        Discover the ultra-fast smartphones, futuristic accessories, and
+        exclusive deals crafted for your lifestyle.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#products" class="btn hero-btn primary-btn">Shop Collection</a>
+        <a href="#deals" class="btn hero-btn secondary-btn">View Deals</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="floating-card">
+        <span class="discount-tag">20% OFF</span>
+        <div class="card-glow"></div>
+        <img
+          src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80"
+          alt="Flagship Phone"
+          class="hero-phone-img"
+        />
+        <div class="card-details">
+          <h3>Pro Max Edition</h3>
+          <p>Starting at $999</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <h2>Our Products</h2>
+  <div class="product-list">
+    {% for product in products %}
+    <div class="product-card">
+      {% if product.is_new == 1 %}
+      <span class="badge">New</span>
+      {% endif %}
+      <form
+        action="{{ url_for('toggle_wishlist', product_id=product.id) }}"
+        method="POST"
+        style="display: inline"
+      >
+        <button type="submit" class="wishlist-btn">
+          {% if product.id in wishlist_ids %}
+          <i class="bi bi-heart-fill" style="color: red"></i>
+          {% else %}
+          <i class="bi bi-heart"></i>
+          {% endif %}
+        </button>
+      </form>
+      <a href="{{ url_for('product_detail', product_id=product.id) }}">
+        <div class="product-image"></div>
+        <h3>{{ product.name }}</h3>
+        <p class="product-brand">{{ product.brand }}</p>
+        <div class="rating">{{ product.rating }} ★</div>
+        <p class="product-price">{{ product.price }} Toman</p>
+      </a>
+      <form
+        action="{{ url_for('add_to_cart', product_id=product.id) }}"
+        method="POST"
+      >
+        <button type="submit" class="btn add-to-cart-btn">Add to Cart</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

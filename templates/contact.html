@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<main class="contact-page">
+  <h1>Contact Us</h1>
+  <p>
+    Have a question or need help? Send us a message and we'll get back to you as
+    soon as possible.
+  </p>
+
+  <form method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea
+      name="message"
+      placeholder="Your Message"
+      rows="5"
+      required
+    ></textarea>
+    <button type="submit" class="btn auth-btn">Send Message</button>
+  </form>
+
+  <div class="contact-info">
+    <h2>Other Ways to Reach Us</h2>
+    <p><i class="bi bi-envelope"></i> support@mobilestore.com</p>
+    <p><i class="bi bi-telephone"></i> +98 21 1234 5678</p>
+    <p><i class="bi bi-geo-alt"></i> Shiraz, Iran</p>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+<main class="product-detail">
+  <div class="product-detail-image"></div>
+  <div class="product-detail-info">
+    <h1>{{ product.name }}</h1>
+    <p class="product-brand">{{ product.brand }}</p>
+    <div class="rating">{{ product.rating }} ★</div>
+    <p class="product-price">{{ product.price }} Toman</p>
+    <form
+      action="{{ url_for('add_to_cart', product_id=product.id) }}"
+      method="POST"
+    >
+      <button type="submit" class="btn add-to-cart-btn">Add to Cart</button>
+    </form>
+  </div>
+</main>
+{% endblock %}
